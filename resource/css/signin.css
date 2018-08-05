@@ -1,0 +1,63 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+.warning {
+	padding: 0 800px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signReg {
+  max-width: 600px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox .form-signReg{
+  margin-bottom: 10px;
+}
+.form-signin .checkbox .form-signReg{
+  font-weight: normal;
+}
+.form-signin .form-control .form-signReg{
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus .form-signReg{
+  z-index: 2;
+}
+.form-signin input[type="userName"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin input[type="testName"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.reda {
+	color:red;
+}
+.one {
+	margin:10px 0;
+}
+.one label{width:100px; float:left; text-align:right; height:20px; line-height:20px}
+.one input{border:1px solid #ccc; height:30px;width:180px;}
+.two{ padding-left:100px;}

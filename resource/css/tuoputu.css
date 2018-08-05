@@ -1,0 +1,53 @@
+.link { stroke: green; stroke-linejoin:bevel;}
+ 
+.link_error{
+ stroke:red;
+ stroke-linejoin:bevel;
+}
+ 
+.nodetext {
+ font: 12px sans-serif;
+ -webkit-user-select:none;
+ -moze-user-select:none;
+ stroke-linejoin:bevel;
+}
+ 
+#container{
+ width:1800px;
+ height:1500px;
+ border:1px solid gray;
+ border-radius:5px;
+ position:relative;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+#networking{
+ width:1500px;
+ height:800px;
+ border:1px solid gray;
+ border-radius:5px;
+ position:relative;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+#lineChart{
+ width:600px;
+ height:500px;
+ border:1px solid gray;
+ border-radius:5px;
+ position:relative;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+#lineChartLoss{
+ width:600px;
+ height:500px;
+ border:1px solid gray;
+ border-radius:5px;
+ position:relative;
+ margin-left: auto;
+ margin-right: auto;
+}
