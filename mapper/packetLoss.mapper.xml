@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.packetLoss.mapper">
+	<!-- 获取每次测试的测试周期数 -->
+	<select id="selectNum" parameterType="com.seu.wsn.Core.Pojo.NodePacketLoss" resultType="int">
+		select count(1) from tb_packetloss where testId=#{testId},testNum=#{testNum} group by testNum
+	</select>
+	
+	<!-- 新增节点丢包率测试结果 -->
+	<insert id="insertPacketLoss" parameterType="com.seu.wsn.Core.Pojo.NodePacketLoss">
+		insert into tb_packetloss(testId,testNum,cycleNum,nodeId,parentId,nodeType,sendSpeed,recievePacket,sendPacket,nodePacketLoss,packetLength,packetInterval) values(#{testId}, #{testNum},#{cycleNum}, #{nodeId},#{parentId},#{nodeType},#{sendSpeed},#{recievePacket},#{sendPacket},#{nodePacketLoss},#{packetLength},#{packetInterval})
+	</insert>
+	
+	
+	
+	<!-- 删除本次丢包率测试结果 -->
+	<delete id="deletePacketLoss" parameterType="java.lang.String">
+		delete from tb_packetloss where testId=#{testId}
+	</delete>
+
+	<!-- 获取丢包率列表 -->
+	<select id="selectPacketLossList"  parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.NodePacketLoss">
+		select * from tb_packetloss where testId=#{testId} order by testNum,cycleNum,nodeType
+	</select>
+</mapper>

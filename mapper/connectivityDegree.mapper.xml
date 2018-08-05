@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.connectivityDegree.mapper">
+	<!-- 获取每次测试的测试周期数 -->
+	<select id="selectNum" parameterType="com.seu.wsn.Core.Pojo.ConnectivityDegree" resultType="int">
+		select count(1) from tb_connectivitydegree where testId=#{testId},testNum=#{testNum} group by testNum
+	</select>
+	
+	<!-- 新增节点联通度测试结果 -->
+	<insert id="insertConnectivityDegree" parameterType="com.seu.wsn.Core.Pojo.ConnectivityDegree">
+		insert into tb_connectivitydegree(testId,testNum,nodeId,recieveFlag) values(#{testId}, #{testNum},#{nodeId},#{recieveFlag})
+	</insert>
+	
+	
+	
+	<!-- 删除本次联通度测试结果 -->
+	<delete id="deleteConnectivityDegree" parameterType="java.lang.String">
+		delete from tb_connectivitydegree where testId=#{testId}
+	</delete>
+
+	<!-- 获取联通度列表 -->
+	<select id="selectConnectivityDegreeList"  parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.ConnectivityDegree">
+		select * from tb_connectivitydegree where testId=#{testId} order by testNum
+	</select>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.uwPathLength.mapper">
+	<!-- 新增节点平均路径测试结果 -->
+	<insert id="insertUwPathLength" parameterType="com.seu.wsn.Core.Pojo.UwPathLength">
+		insert into tb_uwpathlength(testId,testNum,nodeId,nodeType,pathLength) values(#{testId}, #{testNum}, #{nodeId},#{nodeType},#{pathLength})
+	</insert>
+	
+	<!-- 删除本次平均路径测试结果 -->
+	<delete id="deleteUwPathLength" parameterType="java.lang.String">
+		delete from tb_uwpathlength where testId=#{testId}
+	</delete>
+
+	<!-- 获取平均路径列表 -->
+	<select id="selectUwPathLengthList"  parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.UwPathLength">
+		select * from tb_uwpathlength where testId=#{testId} order by testNum,nodeType
+	</select>
+</mapper>

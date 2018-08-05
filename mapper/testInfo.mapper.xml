@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.testInfo.mapper">
+	<!-- 选择测试信息 -->
+	<select id="selectTestInfo" parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.TestInfo">
+		select * from tb_testinfo where testId=#{testId}
+	</select>
+	
+	<!-- 新增测试信息 -->
+	<insert id="insertTestInfo" parameterType="com.seu.wsn.Core.Pojo.TestInfo">
+		insert into tb_testinfo(testName,testId,userName,testTime) values(#{testName}, #{testId},#{userName}, #{testTime})
+	</insert>
+	
+	<!-- 删除测试信息 -->
+	<delete id="deleteTestInfo" parameterType="java.lang.String">
+		delete from tb_testinfo where testId=#{testId}
+	</delete>
+
+	<!-- 获取测试信息列表 -->
+	<select id="testInfoList" parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.TestInfo">
+		select * from tb_testinfo where userName=#{userName}
+	</select>
+</mapper>

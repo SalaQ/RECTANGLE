@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.uwNode.mapper">
+	<!-- 选择节点 -->
+	<select id="selectUwNode" parameterType="com.seu.wsn.Core.Pojo.UwNode" resultType="com.seu.wsn.Core.Pojo.UwNode">
+		select * from tb_uwNode where nodeId=#{nodeId} and testId=#{testId}
+	</select>
+	
+	<!-- 根据节点类型选择节点 -->
+	<select id="selectUwNodeByType" parameterType="com.seu.wsn.Core.Pojo.UwNode" resultType="com.seu.wsn.Core.Pojo.UwNode">
+		select * from tb_uwNode where nodeType=#{nodeType} and testId=#{testId}
+	</select>
+	
+	<!-- 新增节点 -->
+	<insert id="insertUwNode" parameterType="com.seu.wsn.Core.Pojo.UwNode">
+		insert into tb_uwNode(nodeId,ip,parentId,nodeType,onLine,download,joinNetwork,testId,burner) values(#{nodeId}, #{ip},#{parentId}, #{nodeType}, #{onLine}, #{download}, #{joinNetwork},#{testId},#{burner})
+	</insert>
+	
+	<!-- 更新节点信息 -->
+	<update id="updateUwNode" parameterType="com.seu.wsn.Core.Pojo.UwNode">
+		update tb_uwNode set burner=#{burner}, ip=#{ip}, parentId=#{parentId},nodeType=#{nodeType},onLine=#{onLine},download=#{download},joinNetwork=#{joinNetwork} where nodeId=#{nodeId} and testId=#{testId}
+	</update>
+	
+	<!-- 删除节点 -->
+	<delete id="deleteUwNode" parameterType="java.lang.String">
+		delete from tb_uwNode where nodeId=#{nodeId}
+	</delete>
+
+	<!-- 获取节点列表 -->
+	<select id="uwNodeList"  resultType="com.seu.wsn.Core.Pojo.UwNode">
+		select * from tb_uwNode
+	</select>
+	
+	<!-- 获取节点列表 -->
+	<select id="uwNodeListByTestId"  resultType="com.seu.wsn.Core.Pojo.UwNode">
+		select * from tb_uwNode where testId=#{testId}
+	</select>
+</mapper>

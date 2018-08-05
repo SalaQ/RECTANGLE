@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.uwThroughput.mapper">
+	<!-- 新增节点吞吐量测试结果 -->
+	<insert id="insertUwThroughput" parameterType="com.seu.wsn.Core.Pojo.UwThroughput">
+		insert into tb_uwThroughput(testId,testNum,nodeId,parentId,nodeType,successPacket,sendPacket,receivePacket,throughput) values(#{testId}, #{testNum}, #{nodeId},#{parentId},#{nodeType},#{successPacket},#{sendPacket},#{receivePacket},#{throughput})
+	</insert>
+	
+	<!-- 删除本次吞吐量测试结果 -->
+	<delete id="deleteUwThroughput" parameterType="java.lang.String">
+		delete from tb_uwThroughput where testId=#{testId}
+	</delete>
+
+	<!-- 获取吞吐量列表 -->
+	<select id="selectUwThroughputList"  parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.UwThroughput">
+		select * from tb_uwThroughput where testId=#{testId} order by testNum,nodeType
+	</select>
+</mapper>

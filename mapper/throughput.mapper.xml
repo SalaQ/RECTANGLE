@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.throughput.mapper">
+	<!-- 获取每次测试的测试周期数 -->
+	<select id="selectNum" parameterType="com.seu.wsn.Core.Pojo.Throughput" resultType="int">
+		select count(1) from tb_throughput where testId=#{testId},testNum=#{testNum} group by testNum
+	</select>
+	
+	<!-- 新增节点吞吐量测试结果 -->
+	<insert id="insertThroughput" parameterType="com.seu.wsn.Core.Pojo.Throughput">
+		insert into tb_throughput(testId,testNum,cycleNum,nodeId,parentId,nodeType,sendSpeed,recievePacketFact,recievePacketTheory,sendPacket,nodePacketLoss,packetLength,throughput) values(#{testId}, #{testNum},#{cycleNum}, #{nodeId},#{parentId},#{nodeType},#{sendSpeed},#{recievePacketFact},#{recievePacketTheory},#{sendPacket},#{nodePacketLoss},#{packetLength},#{throughput})
+	</insert>
+	
+	
+	
+	<!-- 删除本次吞吐量测试结果 -->
+	<delete id="deleteThroughput" parameterType="java.lang.String">
+		delete from tb_throughput where testId=#{testId}
+	</delete>
+
+	<!-- 获取吞吐量列表 -->
+	<select id="selectThroughputList"  parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.Throughput">
+		select * from tb_throughput where testId=#{testId} order by testNum,cycleNum,nodeType
+	</select>
+</mapper>

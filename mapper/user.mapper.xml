@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.user.mapper">
+	<!-- 选择用户 -->
+	<select id="selectUser" parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.User">
+		select * from tb_user where userName=#{userName}
+	</select>
+	
+	<!-- 新增用户 -->
+	<insert id="insertUser" parameterType="com.seu.wsn.Core.Pojo.User">
+		insert into tb_user(userName,pwd,registerDate,onLine) values(#{userName}, #{pwd},#{registerDate}, #{onLine})
+	</insert>
+	
+	<!-- 更新用户信息 -->
+	<update id="updateUser" parameterType="com.seu.wsn.Core.Pojo.User">
+		update tb_user set userName=#{userName},pwd=#{pwd},onLine=#{onLine} where userName=#{userName}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="java.lang.String">
+		delete from tb_user where userName=#{userName}
+	</delete>
+
+	<!-- 获取用户列表 -->
+	<select id="userList"  resultType="com.seu.wsn.Core.Pojo.User">
+		select * from tb_user
+	</select>
+</mapper>

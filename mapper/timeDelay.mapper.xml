@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.timeDelay.mapper">
+	<!-- 获取每次测试的测试周期数 -->
+	<select id="selectNum" parameterType="com.seu.wsn.Core.Pojo.TimeDelay" resultType="int">
+		select count(1) from tb_timedelay where testId=#{testId},testNum=#{testNum} group by testNum
+	</select>
+	
+	<!-- 新增节点时延测试结果 -->
+	<insert id="insertTimeDelay" parameterType="com.seu.wsn.Core.Pojo.TimeDelay">
+		insert into tb_timedelay(testId,testNum,cycleNum,nodeId,nodeType,packetLength,timeDelay) values(#{testId}, #{testNum},#{cycleNum}, #{nodeId},#{nodeType},#{packetLength},#{timeDelay})
+	</insert>
+	
+	<!-- 删除本次时延测试结果 -->
+	<delete id="deleteTimeDelay" parameterType="java.lang.String">
+		delete from tb_timedelay where testId=#{testId}
+	</delete>
+
+	<!-- 获取时延列表 -->
+	<select id="selectTimeDelayList"  parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.TimeDelay">
+		select * from tb_timedelay where testId=#{testId} order by testNum
+	</select>
+</mapper>

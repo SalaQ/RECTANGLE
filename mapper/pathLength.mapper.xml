@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seu.wsn.pathLength.mapper">
+	<!-- 获取每次测试的测试周期数 -->
+	<select id="selectNum" parameterType="com.seu.wsn.Core.Pojo.PathLength" resultType="int">
+		select count(1) from tb_pathlength where testId=#{testId},testNum=#{testNum} group by testNum
+	</select>
+	
+	<!-- 新增节点平均路径测试结果 -->
+	<insert id="insertPathLength" parameterType="com.seu.wsn.Core.Pojo.PathLength">
+		insert into tb_pathlength(testId,testNum,cycleNum,nodeId,nodeType,pathLength) values(#{testId}, #{testNum},#{cycleNum}, #{nodeId},#{nodeType},#{pathLength})
+	</insert>
+	
+	
+	
+	<!-- 删除本次平均路径测试结果 -->
+	<delete id="deletePathLength" parameterType="java.lang.String">
+		delete from tb_pathlength where testId=#{testId}
+	</delete>
+
+	<!-- 获取平均路径列表 -->
+	<select id="selectPathLengthList"  parameterType="java.lang.String" resultType="com.seu.wsn.Core.Pojo.PathLength">
+		select * from tb_pathlength where testId=#{testId} order by testNum,cycleNum,nodeType
+	</select>
+</mapper>
