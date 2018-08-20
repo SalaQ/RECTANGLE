@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>首页</title>
+
+    <link rel="stylesheet" href="./css/homePage.css">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/popper.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+
+    <script>
+        function logout() {
+            window.location.href = "/ui/login";
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">
+        <span class="navbar-brand mb-0 h1">测试平台</span>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ui/nodeList">节点列表</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ui/nodeTopo">节点拓扑</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">性能测试</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">1</a>
+                        <a class="dropdown-item" href="#">2</a>
+                        <a class="dropdown-item" href="#">3</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!--<form class="form-inline my-2 my-lg-0">-->
+                <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+                <button class="btn btn-outline-light my-2 my-sm-0" onclick="logout()">退出</button>
+            <!--</form>-->
+        </div>
+    </nav>
+
+    <main role="main">
+        <div class="starter-template">
+            <h1 class="display-3 text-info">Welcome!</h1>
+            <br/>
+            <p><a class="btn btn-outline-info" href="/ui/nodeList">开始测试</a></p>
+        </div>
+
+        <div class="container">
+            <div class="card-deck">
+                <div class="card text-white bg-info">
+                    <img class="card-img-top" src="./image/CC2530.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">CC2530</h5>
+                        <p class="card-text">CC2530 是基于2.4-GHz IEEE 802.15.4、ZigBee 和RF4CE 应用的一个真正的片上系统解决方案。</p>
+                        <a href="https://baike.baidu.com/item/cc2530" target="_blank" class="card-link text-white">详细介绍 &raquo;</a>
+                    </div>
+                </div>
+
+                <div class="card text-white bg-info">
+                    <img class="card-img-top" src="./image/SC2440.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">SC2440</h5>
+                        <p class="card-text">SC2440 是以英国 ARM 公司的内核芯片作为 CPU，同时附加其他外围功能的嵌入式开发板。</p>
+                        <a href="https://baike.baidu.com/item/ARM%E5%BC%80%E5%8F%91%E6%9D%BF" target="_blank" class="card-link text-white">详细介绍 &raquo;</a>
+                    </div>
+                </div>
+
+                <div class="card text-white bg-info">
+                    <img class="card-img-top" src="./image/Switch.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Switch</h5>
+                        <p class="card-text">交换机是一种用于电（光）信号转发的网络设备。它可以为任意两个网络节点提供独享的电信号通路。</p>
+                        <a href="https://baike.baidu.com/item/交换机" target="_blank" class="card-link text-white">详细介绍 &raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer text-center fixed-bottom">
+        <div class="container">
+            <span class="text-muted">Producted By Hu Qin</span>
+        </div>
+    </footer>
+</body>
+</html>
