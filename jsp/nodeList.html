@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>节点列表</title>
+
+    <link rel="stylesheet" href="./css/nodeList.css">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/popper.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+
+    <script>
+        function getNodeList() {
+            var nodeTbody = window.document.getElementById("tbody");
+
+            $.ajax({
+                url: "/nodeapi/node",
+                dataType: "json",
+                data: "",
+                type: "GET",
+                success: function(data) {
+                    var html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].nodeType == 'buoyNode') {
+                            html += "<tr class='text-danger'>";
+                        } else if (data[i].nodeType == 'gatewayNode') {
+                            html += "<tr class='text-success'>";
+                        } else {
+                            html += "<tr class='text-primary'>";
+                        }
+                        html = html + "<th scope=\"row\">" + data[i].nodeId + "</th>"
+                                    + "<td>" + data[i].nodeIp + "</td>"
+                                    + "<td>" + data[i].nodeType + "</td>"
+                                    + "<td>" + data[i].parentId + "</td>"
+                                    + "<td>" + data[i].parentType + "</td>";
+                        html += "</tr>";
+                    }
+                    nodeTbody.innerHTML = html;
+                },
+                error: function() {
+                    alert("error");
+                }
+            })
+        }
+
+        function logout() {
+            window.location.href = "/ui/login";
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">
+        <span class="navbar-brand mb-0 h1">测试平台</span>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/ui/homePage">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link">节点列表</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ui/nodeTopo">节点拓扑</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">性能测试</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">1</a>
+                        <a class="dropdown-item" href="#">2</a>
+                        <a class="dropdown-item" href="#">3</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!--<form class="form-inline my-2 my-lg-0">-->
+                <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+                <button class="btn btn-outline-light my-2 my-sm-0" onclick="logout()">退出</button>
+            <!--</form>-->
+        </div>
+    </nav>
+
+    <main role="main">
+        <div class="starter-template">
+            <h1 class="display-3 text-info">Node List</h1>
+            <br/>
+            <button class="btn btn-outline-info" onclick="getNodeList()">刷新列表</button>
+        </div>
+
+        <div class="nodeTable">
+            <table class="table table-light text-info" style="table-layout: fixed">
+                <thead>
+                <tr>
+                    <th scope="col">节点id</th>
+                    <th scope="col">节点ip</th>
+                    <th scope="col">节点类型</th>
+                    <th scope="col">父节点id</th>
+                    <th scope="col">父节点类型</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer text-center fixed-bottom">
+        <div class="container">
+            <span class="text-muted">Producted By Hu Qin</span>
+        </div>
+    </footer>
+</body>
+</html>
